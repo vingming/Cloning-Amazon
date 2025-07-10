@@ -656,5 +656,36 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: "9e3c4b17-d4a9-4a73-bae0-2e9d622f1f37",
+    image: "images/products/backpack.jpg",
+    name: "Travel Backpack",
+    rating: {
+      stars: 5,
+      count: 200
+    },
+    priceCents: 5000,
+    keywords: [
+      "backpack",
+      "black",
+      "ergonomics",
+      "mens"
+    ]
+  },{
+    id: "f4a72c56-1a8d-4b3e-9da5-8a7f1c2b5e4f",
+    image: "images/products/umbrella.jpg",
+    name: "Waterproof Green Umbrella",
+    rating: {
+      stars: 2.0,
+      count: 40
+    },
+    priceCents: 1000,
+    keywords: [
+      "umbrella",
+      "waterproof",
+      "green",
+      "women"
+    ]
   }
 ];
