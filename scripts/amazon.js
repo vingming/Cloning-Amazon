@@ -70,9 +70,11 @@ function updateCartQuantity(){
 document.querySelectorAll('.js-add-to-cart').forEach((button, index)=>{
   let timeoutId = 0;
   button.addEventListener('click',()=>{
-    const quantitySelector = document.querySelector(`.js-quantity-selector-${products[index].id}`);
+    const quantitySelector = document
+      .querySelector(`.js-quantity-selector-${products[index].id}`);
     const quantity = Number(quantitySelector.value);
     const {productId} = button.dataset;
+    
     addToCart(productId, quantity);
     updateCartQuantity();
 
