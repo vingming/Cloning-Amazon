@@ -12,7 +12,7 @@ export function getProduct(productId){
   return matchingProduct;
 }
 
-class Product{
+export class Product{
   id;
   image;
   name;
@@ -41,7 +41,7 @@ class Product{
   }
 }
 
-class Clothing extends Product{
+export class Clothing extends Product{
   sizeChartLink;
 
   constructor(productDetails){
@@ -59,34 +59,27 @@ class Clothing extends Product{
   }
 }
 
-/*
-const date = new Date();
-console.log(date);
-console.log(date.toLocaleTimeString());
+export class Appliance extends Product{
+  instructionsLink;
+  warrantyLink;
 
-
-console.log(this);
-
-const object2 = {
-  a: 2,
-  b: this.a
-};
-
-
-function logThis(){
-  console.log(this);
-}
-logThis();
-logThis.call('hello');
-
-const object3 = {
-  method: ()=>{
-    console.log(this);
+  constructor(productDetails){
+    super(productDetails);
+    this.instructionsLink = productDetails.instructionsLink;
+    this.warrantyLink = productDetails.warrantyLink;
   }
-};
 
-object3.method();
-*/
+  extraInfoHTML(){
+    return `
+      <a href="${this.instructionsLink}" target="_blank">
+        Instructions
+      </a>
+      <a href="${this.warrantyLink}" target="_blank">
+        Warranty
+      </a>
+    `;
+  }
+}
 
 export const products = [
   {
@@ -148,7 +141,10 @@ export const products = [
       "toaster",
       "kitchen",
       "appliances"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
@@ -177,7 +173,10 @@ export const products = [
     keywords: [
       "kitchen",
       "cookware"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "dd82ca78-a18b-4e2a-9250-31e67412f98d",
@@ -333,7 +332,10 @@ export const products = [
       "water boiler",
       "appliances",
       "kitchen"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
@@ -465,7 +467,10 @@ export const products = [
       "bins",
       "cans",
       "kitchen"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "19c6a64a-5463-4d45-9af8-e41140a4100c",
@@ -561,7 +566,10 @@ export const products = [
     keywords: [
       "cooking set",
       "kitchen"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "a434b69f-1bc1-482d-9ce7-cd7f4a66ce8d",
@@ -623,7 +631,10 @@ export const products = [
       "boxes",
       "food containers",
       "kitchen"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "0d7f9afa-2efe-4fd9-b0fd-ba5663e0a524",
@@ -638,7 +649,10 @@ export const products = [
       "coffeemakers",
       "kitchen",
       "appliances"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "02e3a47e-dd68-467e-9f71-8bf6f723fdae",
@@ -698,7 +712,10 @@ export const products = [
       "food blenders",
       "kitchen",
       "appliances"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "36c64692-677f-4f58-b5ec-0dc2cf109e27",
@@ -714,7 +731,10 @@ export const products = [
       "baking",
       "cookware",
       "kitchen"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "aaa65ef3-8d6f-4eb3-bc9b-a6ea49047d8f",
@@ -729,7 +749,10 @@ export const products = [
       "kitchen",
       "kitchen towels",
       "tissues"
-    ]
+    ],
+    type: "appliances",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "bc2847e9-5323-403f-b7cf-57fde044a955",
@@ -782,5 +805,39 @@ export const products = [
   if(productDetails.type === 'clothing'){
     return new Clothing(productDetails);
   }
+
+  if(productDetails.type === 'appliances'){
+    return new Appliance(productDetails);
+  }
+
   return new Product(productDetails);
 });
+
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+
+
+console.log(this);
+
+const object2 = {
+  a: 2,
+  b: this.a
+};
+
+
+function logThis(){
+  console.log(this);
+}
+logThis();
+logThis.call('hello');
+
+const object3 = {
+  method: ()=>{
+    console.log(this);
+  }
+};
+
+object3.method();
+*/
