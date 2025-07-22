@@ -9,14 +9,23 @@ import { loadCart } from '../data/cart.js';
 //why use async, well can used 'await', makes shortcut and readable
 //u can only use await when u had async
 async function loadPage(){
-  await loadProductsFetch(); //wait this line to finish, no need .then
+  try{
+    //throw 'error1';
 
-  const value = await new Promise((resolve)=>{
-    loadCart(()=>{
-      resolve('value3');
+    await loadProductsFetch(); //wait this line to finish, no need .then
+
+    const value = await new Promise((resolve, reject)=>{
+      //throw 'error2'; // reject (function) create an error in the future
+      loadCart(()=>{
+        //reject('error1');
+        resolve('value3');
+      });
     });
-  });
-
+    
+  } catch (error) {
+    console.log('Unexpected error. Please try again later.');
+  }
+  
   renderOrderSummary();
   renderPaymentSummary();
 }
