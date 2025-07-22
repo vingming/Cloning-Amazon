@@ -1,8 +1,15 @@
 import {renderOrderSummary} from "../../scripts/checkout/orderSummary.js";
 import {loadFromStorage} from "../../data/cart.js";
+import {loadProducts} from "../../data/products.js";
 
 //looks and behave
 describe('test suite: renderOrderSummary', () => {
+  beforeAll((done)=>{
+    loadProducts(()=>{
+      done();
+    });
+  });
+
   beforeEach(()=>{
     
   });
