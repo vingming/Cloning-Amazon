@@ -6,13 +6,13 @@ import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js'
 import {renderPaymentSummary} from './paymentSummary.js';
 import {renderCheckoutHeader} from './checkoutHeader.js';
 
-
 export function renderOrderSummary(){
 
   let cartSummaryHTML = '';
 
   cart.forEach((cartItem)=>{
     const productId = cartItem.productId;
+
     const matchingProduct = getProduct(productId);
 
     const deliveryOptionsId = cartItem.deliveryOptionsId;
@@ -129,4 +129,3 @@ export function renderOrderSummary(){
 }
 
 renderCheckoutHeader();
-renderOrderSummary();
