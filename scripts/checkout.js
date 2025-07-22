@@ -6,6 +6,24 @@ import {renderPaymentSummary} from './checkout/paymentSummary.js';
 import { loadProducts, loadProductsFetch } from '../data/products.js';
 import { loadCart } from '../data/cart.js';
 
+//why use async, well can used 'await', makes shortcut and readable
+//u can only use await when u had async
+async function loadPage(){
+  await loadProductsFetch(); //wait this line to finish, no need .then
+
+  const value = await new Promise((resolve)=>{
+    loadCart(()=>{
+      resolve('value3');
+    });
+  });
+
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+
+loadPage();
+
+/*
 // array of promises, runs all completely before next code execute
 Promise.all([
   loadProductsFetch(),
@@ -20,7 +38,7 @@ Promise.all([
   renderPaymentSummary();
 });
 
-/*
+
 //resolve controls 
 new Promise((resolve)=>{
   loadProducts(()=>{
