@@ -4,10 +4,8 @@ import {loadProducts, loadProductsFetch} from "../../data/products.js";
 
 //looks and behave
 describe('test suite: renderOrderSummary', () => {
-  beforeAll((done)=>{
-    loadProductsFetch().then(()=>{
-      done();
-    });
+  beforeAll( async ()=>{
+    await loadProductsFetch();
   });
 
   beforeEach(()=>{

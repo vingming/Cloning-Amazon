@@ -4,15 +4,17 @@ import {renderPaymentSummary} from './checkout/paymentSummary.js';
 //import '../data/data/car.js';
 //import '../data/backend-practice.js';
 import { loadProducts, loadProductsFetch } from '../data/products.js';
-import { loadCart } from '../data/cart.js';
+import { loadCart, loadCartFetch } from '../data/cart.js';
 
 //why use async, well can used 'await', makes shortcut and readable
 //u can only use await when u had async
 async function loadPage(){
   try{
     //throw 'error1';
-
-    await loadProductsFetch(); //wait this line to finish, no need .then
+    await Promise.all([
+      loadProductsFetch(),
+      loadCartFetch()
+    ]);
 
     const value = await new Promise((resolve, reject)=>{
       //throw 'error2'; // reject (function) create an error in the future
